@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SkillsComponent } from './skills/skills.component';
+import { FormsModule } from '@angular/forms';
 
 const routes = [
   { path: '', component: AboutComponent },
@@ -22,7 +23,8 @@ const routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

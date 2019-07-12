@@ -1,16 +1,20 @@
 <div class="skills">
   <h1>Computer skills</h1>
 
-  <h3>Email</h3>
-  <p>shumeikotaras1@gmail.com</p>
-
-  <h3>Phone number</h3>
-  <p>+38 (099) 027-13-73</p>
-
-  <h3>City</h3>
-  <p>Ivano-Frankivsk, Ukraine</p>
-
-  <div>
-    <button routerLink="">Back</button>
+  <div *ngFor="let skill of skills; let i = index;">
+    <span>{{i + 1}}. {{skill.name}}</span>
+    <button class="rm" (click)="removeSkill(skill.id)">&times;</button>
   </div>
+  
+  <div class="add-skill">
+    <input
+      type="text"
+      placeholder="Add skill.."
+      [(ngModel)]="name"
+      (keydown.enter)="addSkill()"
+    >
+    <button (click)="addSkill()">Add skill</button>
+  </div>
+
+  <button routerLink="" class="back">Back</button>
 </div>
