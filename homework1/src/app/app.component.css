@@ -1,0 +1,13 @@
+* {
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  color: #4b4b4b;
+}
+
+div {
+  text-align: center;
+}
+
+p {
+  display: inline-block;
+  width: 50%;
+}
