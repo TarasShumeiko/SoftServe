@@ -1,0 +1,20 @@
+* {
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  color: #4b4b4b;
+}
+
+.about {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+p {
+  display: inline-block;
+  width: 50%;
+}
+
+button {
+  margin: 1rem;
+  border-radius: 5rem;
+  cursor: pointer;
+}
