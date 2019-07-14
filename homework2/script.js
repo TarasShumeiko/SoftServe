@@ -1,11 +1,7 @@
 const mapContacts = data => {
-  const [contacts] = [...data.filter(contact => contact.user === 'Vasya')];
-  return {
-    [contacts.user]: {
-      brand: contacts.brand,
-      phones: contacts.phones
-    }
-  }
+  return data.reduce((acc, current) => {
+    return acc.set(current.user, current);
+  }, new Map());
 };
 
 
