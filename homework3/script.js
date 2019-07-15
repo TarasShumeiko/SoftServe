@@ -1,44 +1,6 @@
-const mapContacts = data => {
-  return data.reduce((acc, current) => {
-    return acc.set(current.user, current);
-  }, new Map());
+const filterContactsByNumbers = () => {
+
 };
-
-
-const getUniqueCars = data => {
-  const cars = [];
-  data.map(userCars => {
-    userCars.brand.map(model => {
-      if (cars.indexOf(model) === -1) cars.push(model)
-    })
-  });
-  return cars;
-};
-
-
-const groupContacts = data => {
-  const operatorCodes = [];
-  data.map(userNumbers => {
-    userNumbers.phones.map(phoneNumber => {
-      const code = phoneNumber.substr(0, 5);
-      if (operatorCodes.indexOf(code) === -1) operatorCodes.push(code)
-    })
-  });
-  const usersByNumbers = {};
-  operatorCodes.map(code => {
-    const contacts = [];
-    data.map(user => {
-      user.phones.map(phoneNumber => {
-        if (phoneNumber.substr(0, 5) === code) {
-          contacts.push(user)
-        }
-      })
-    });
-    Object.defineProperty(usersByNumbers, code, {value: contacts});
-  });
-  return usersByNumbers;
-};
-
 
 const contacts = [
   {
@@ -93,6 +55,4 @@ const contacts = [
   }
 ];
 
-console.log(mapContacts(contacts));
-console.log(getUniqueCars(contacts));
-console.log(groupContacts(contacts));
+// console.log(filterContactsByNumbers());
