@@ -1,5 +1,13 @@
-const filterContactsByNumbers = () => {
-
+const getUsersByPhoneNumber = (data, num) => {
+  const users = {};
+  data.map(contacts => {
+    contacts.phones.map(phone => {
+      if (phone.indexOf(num) !== -1) {
+        Object.defineProperty(users, contacts.user, {value: contacts});
+      }
+    })
+  });
+  return users
 };
 
 const contacts = [
@@ -55,4 +63,6 @@ const contacts = [
   }
 ];
 
-// console.log(filterContactsByNumbers());
+console.log(getUsersByPhoneNumber(contacts, 380));
+console.log(getUsersByPhoneNumber(contacts, 99));
+console.log(getUsersByPhoneNumber(contacts, 7096));
