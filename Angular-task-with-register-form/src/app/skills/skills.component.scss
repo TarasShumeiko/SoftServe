@@ -1,0 +1,30 @@
+.skills {
+  text-align: center;
+  margin-top: 5rem;
+  .rm {
+    border-radius: 50%;
+    color: #fff;
+    border: none;
+    width: 20px;
+    height: 20px;
+    transition: .3s all;
+    cursor: pointer;
+    margin-left: .2rem;
+    &:hover {
+      background: #bd0000;
+    }
+  }
+  .add-skill {
+    margin-top: 1rem;
+    & button {
+      margin-left: .5rem;
+      border-radius: 5rem;
+      cursor: pointer;
+    }
+  }
+  .back {
+    margin-top: 2rem;
+    border-radius: 5rem;
+    cursor: pointer;
+  }
+}
