@@ -1,92 +1,96 @@
 <div class="registerForm">
   <form>
-    <div>
-      <div>
-        <label for="firstName">First Name:</label>
-        <input
-          [(ngModel)]="user.firstName"
-          (focus)="clearField(firstName.id)"
-          (blur)="validateField(firstName.id)"
-          required
-          #firstName
-          type="text"
-          name="firstName"
-          id="firstName"
-        >
+    <div class="content">
+      <label for="firstName">First Name:</label>
+      <input
+        [(ngModel)]="user.firstName"
+        [pattern]="validation.firstName"
+        required
+        maxlength="20"
+        placeholder="name"
+        #firstName="ngModel"
+        type="text"
+        name="firstName"
+        id="firstName"
+      >
+      <div [hidden]="firstName.valid || firstName.pristine">
+        Поле 'First Name' обов'язкове для заповнення.
+        Повинне містити мінімум 3 букви
       </div>
     </div>
-    <div>
-      <div>
-        <label required for="lastName">Last Name:</label>
-        <input
-          [(ngModel)]="user.lastName"
-          (focus)="clearField(lastName.id)"
-          required
-          #lastName
-          type="text"
-          name="lastName"
-          id="lastName"
-        >
+    <div class="content">
+      <label required for="lastName">Last Name:</label>
+      <input
+        [(ngModel)]="user.lastName"
+        [pattern]="validation.lastName"
+        required
+        maxlength="20"
+        placeholder="surname"
+        #lastName="ngModel"
+        type="text"
+        name="lastName"
+        id="lastName"
+      >
+      <div [hidden]="lastName.valid || lastName.pristine">
+        Поле 'Last Name' обов'язкове для заповнення.
+        Повинне містити мінімум 3 букви
       </div>
     </div>
-    <div>
-      <div>
-        <label required for="phoneNumber">Phone Number:</label>
-        <input
-          [(ngModel)]="user.phoneNumber"
-          (focus)="clearField(phoneNumber.id)"
-          required
-          #phoneNumber
-          type="text"
-          name="phoneNumber"
-          id="phoneNumber"
-        >
+    <div class="content">
+      <label required for="phoneNumber">Phone Number:</label>
+      <input
+        [(ngModel)]="user.phoneNumber"
+        [pattern]="validation.phoneNumber"
+        required
+        placeholder="0991234567"
+        #phoneNumber="ngModel"
+        type="text"
+        name="phoneNumber"
+        id="phoneNumber"
+      >
+      <div [hidden]="phoneNumber.valid || phoneNumber.pristine">
+        Поле 'Phone Number' обов'язкове для заповнення.
+        Повинне містити 10-12 цифр
       </div>
     </div>
-    <div>
-      <div>
-        <label required for="email">Email:</label>
-        <input
-          [(ngModel)]="user.email"
-          (focus)="clearField(email.id)"
-          required
-          #email
-          type="text"
-          name="email"
-          id="email"
-        >
+    <div class="content">
+      <label required for="email">Email:</label>
+      <input
+        [(ngModel)]="user.email"
+        [pattern]="validation.email"
+        required
+        placeholder="example@gmail.com"
+        #email="ngModel"
+        type="text"
+        name="email"
+        id="email"
+      >
+      <div [hidden]="email.valid || email.pristine">
+        Поле 'Email' обов'язкове для заповнення,
+        наприклад example@gmail.com
       </div>
     </div>
-    <div>
-      <div>
-        <label required for="password">Password:</label>
-        <input
-          [(ngModel)]="user.password"
-          (focus)="clearField(password.id)"
-          required
-          #password
-          type="password"
-          name="password"
-          id="password"
-        >
+    <div class="content">
+      <label required for="password">Password:</label>
+      <input
+        [(ngModel)]="user.password"
+        [pattern]="validation.password"
+        required
+        maxlength="20"
+        placeholder="********"
+        #password="ngModel"
+        type="password"
+        name="password"
+        id="password"
+      >
+      <div [hidden]="password.valid || password.pristine">
+        Поле 'Password' обов'язкове для заповнення.
+        Пароль повинен містити мінімум 8 символів.
+        Всі букви повинні бути з англійського алфавіту.
+        Також повинна бути як мінімум одна цифра
       </div>
     </div>
-    <div>
-      <div>
-        <label required for="passwordRepeat">Repeat the password:</label>
-        <input
-          [(ngModel)]="user.passwordRepeat"
-          (focus)="clearField(passwordRepeat.id)"
-          required
-          #passwordRepeat
-          type="password"
-          name="passwordRepeat"
-          id="passwordRepeat"
-        >
-      </div>
-    </div>
-    <div>{{firstName.className}}</div>
-    <div>{{lastName.className}}</div>
+
     <button routerLink="" class="back">Back</button>
     <button type="submit">Confirm</button>
   </form>

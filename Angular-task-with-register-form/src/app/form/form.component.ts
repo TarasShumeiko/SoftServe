@@ -7,20 +7,18 @@ import { Component } from '@angular/core';
 })
 export class FormComponent {
   user = {
-    firstName: 'name',
-    lastName: 'surname',
-    phoneNumber: '0991234567',
-    email: 'example@com',
-    password: 'password',
-    passwordRepeat: 'password',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
   };
 
-  clearField = data => {
-    this.user[data] = '';
-    console.log(data);
-  }
-
-  validateField = data => {
-    console.log(this.user[data]);
-  }
+  validation = {
+    firstName: /^[А-Яа-яЁё\A-Za-z\W\s\d][^0-9_!¡?÷?¿/\\+=@#,.$%ˆ&*(){}|~<>;:[\]]{2,}$/,
+    lastName: /^[А-Яа-яЁё\A-Za-z\W\s\d][^0-9_!¡?÷?¿/\\+=@#,.$%ˆ&*(){}|~<>;:[\]]{2,}$/,
+    phoneNumber: /^[+]*[0-9]{10,12}/,
+    email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+  };
 }

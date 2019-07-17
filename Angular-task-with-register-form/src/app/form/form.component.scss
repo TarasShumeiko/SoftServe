@@ -1,15 +1,15 @@
 .registerForm {
+  display: flex;
+  justify-content: center;
   text-align: center;
   margin-top: 5rem;
-  div {
+  .content {
     display: flex;
-    justify-content: center;
-    margin: .5rem 0;
-    div {
-      display: flex;
-      justify-content: space-between;
-      width: 400px;
-    }
+    flex-direction: column;
+  }
+  div {
+    margin: 1rem 0;
+    width: 400px;
   }
   label {
     margin-right: 1rem;

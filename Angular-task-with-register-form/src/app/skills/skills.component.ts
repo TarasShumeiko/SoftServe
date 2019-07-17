@@ -28,11 +28,13 @@ export class SkillsComponent {
   }
 
   addSkill() {
-    const skill = {
-      name: this.name,
-      id: Date.now()
-    };
-    this.skills.push(skill);
-    this.name = '';
+    if (this.name) {
+      const skill = {
+        name: this.name,
+        id: Date.now()
+      };
+      this.skills.push(skill);
+      this.name = '';
+    }
   }
 }
