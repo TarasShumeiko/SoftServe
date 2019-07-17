@@ -1,0 +1,80 @@
+<div class="reactive-form">
+  <form>
+    <div class="content" [formGroup]="formGroup">
+      <label for="firstName">First Name:</label>
+      <input
+        type="text"
+        formControlName="firstName"
+        maxlength="20"
+        id="firstName"
+        placeholder="name"
+      >
+      <div [hidden]>
+        Поле 'First Name' обов'язкове для заповнення.
+        Повинне містити мінімум 3 букви
+      </div>
+
+      <label required for="lastName">Last Name:</label>
+      <input
+        type="text"
+        formControlName="lastName"
+        maxlength="20"
+        id="lastName"
+        placeholder="surname"
+      >
+      <div [hidden]>
+        Поле 'Last Name' обов'язкове для заповнення.
+        Повинне містити мінімум 3 букви
+      </div>
+
+      <label required for="phoneNumber">Phone Number:</label>
+      <input
+        type="text"
+        formControlName="phoneNumber"
+        id="phoneNumber"
+        placeholder="0991234567"
+      >
+      <div [hidden]>
+        Поле 'Phone Number' обов'язкове для заповнення.
+        Повинне містити 10-12 цифр
+      </div>
+
+      <label required for="email">Email:</label>
+      <input
+        type="text"
+        formControlName="email"
+        id="email"
+        placeholder="example@gmail.com"
+      >
+      <div [hidden]>
+        Поле 'Email' обов'язкове для заповнення,
+        наприклад example@gmail.com
+      </div>
+
+      <label required for="birthday">Date of Birth:</label>
+      <input
+        type="date"
+        formControlName="birthday"
+        id="birthday"
+      >
+      <div [hidden]>
+        Поле 'Date of Birth' обов'язкове для заповнення.
+        Вкажіть коректну дату народження
+      </div>
+
+      <label required for="salary">Salary in KGS:</label>
+      <input
+        type="number"
+        formControlName="salary"
+        id="salary"
+      >
+      <div [hidden]>
+        Поле 'Salary in KGS' обов'язкове для заповнення.
+        Число не повинне перевищувати 1 млн
+      </div>
+    </div>
+
+    <button routerLink="" class="back">Back</button>
+    <button type="submit">Confirm</button>
+  </form>
+</div>
