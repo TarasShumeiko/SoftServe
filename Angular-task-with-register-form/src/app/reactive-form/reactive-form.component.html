@@ -3,8 +3,14 @@
   <div>Your phone number: {{phoneNumber.value}}</div>
   <div>Your email: {{email.value}}</div>
   <div>You have {{years}} years old</div>
-  <div>You earn {{salary.value}} KGS</div>
+  <div>You earn {{currentCurrency === 'USD' ? (salary.value / 70).toFixed(2) : salary.value}} {{currentCurrency}}</div>
+  <select name="currency" id="currency" [(ngModel)]="currentCurrency">
+    <option *ngFor="let currency of currencies; let i=index">
+      {{currency}}
+    </option>
+  </select>
 </div>
+
 <div class="reactive-form">
   <form (ngSubmit)="onSubmit()">
     <div class="content" [formGroup]="formGroup">

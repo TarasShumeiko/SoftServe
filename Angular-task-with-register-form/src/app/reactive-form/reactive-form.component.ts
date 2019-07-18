@@ -11,6 +11,8 @@ export class ReactiveFormComponent implements OnInit {
 
   showData = false;
   years = null;
+  currencies = ['KGS', 'USD'];
+  currentCurrency = 'KGS';
 
   ngOnInit() {
     this.formGroup = new FormGroup({
