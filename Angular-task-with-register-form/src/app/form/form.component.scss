@@ -11,12 +11,17 @@
     margin: 1rem 0;
     width: 400px;
   }
-  label {
-    margin-right: 1rem;
-  }
   button {
     margin: 1rem;
     border-radius: 5rem;
     cursor: pointer;
   }
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
 }

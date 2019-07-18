@@ -9,7 +9,7 @@
         id="firstName"
         placeholder="name"
       >
-      <div [hidden]>
+      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
         Поле 'First Name' обов'язкове для заповнення.
         Повинне містити мінімум 3 букви
       </div>
@@ -22,7 +22,7 @@
         id="lastName"
         placeholder="surname"
       >
-      <div [hidden]>
+      <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
         Поле 'Last Name' обов'язкове для заповнення.
         Повинне містити мінімум 3 букви
       </div>
@@ -34,7 +34,7 @@
         id="phoneNumber"
         placeholder="0991234567"
       >
-      <div [hidden]>
+      <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
         Поле 'Phone Number' обов'язкове для заповнення.
         Повинне містити 10-12 цифр
       </div>
@@ -46,7 +46,7 @@
         id="email"
         placeholder="example@gmail.com"
       >
-      <div [hidden]>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)">
         Поле 'Email' обов'язкове для заповнення,
         наприклад example@gmail.com
       </div>
@@ -56,10 +56,11 @@
         type="date"
         formControlName="birthday"
         id="birthday"
+        [ng-min="18"]
       >
-      <div [hidden]>
+      <div *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">
         Поле 'Date of Birth' обов'язкове для заповнення.
-        Вкажіть коректну дату народження
+        Вкажіть дату народження
       </div>
 
       <label required for="salary">Salary in KGS:</label>
@@ -67,8 +68,9 @@
         type="number"
         formControlName="salary"
         id="salary"
+        placeholder="25000"
       >
-      <div [hidden]>
+      <div *ngIf="salary.invalid && (salary.dirty || salary.touched)">
         Поле 'Salary in KGS' обов'язкове для заповнення.
         Число не повинне перевищувати 1 млн
       </div>

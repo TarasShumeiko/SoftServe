@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -7,67 +7,44 @@ import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@ang
   styleUrls: ['./reactive-form.component.scss']
 })
 export class ReactiveFormComponent implements OnInit {
-  // formControl: FormControl; // Для одної форми
-  formGroup: FormGroup; // Для декількох форм
-  // userListControl: FormGroup; // Для списку
-
-  // FormBuilder спрощує створення складних форм
-  // constructor(private formBuilder: FormBuilder) {}
+  formGroup: FormGroup;
 
   ngOnInit() {
-    // Для одної форми
-    // this.formControl = new FormControl('John', [Validators.required, Validators.minLength(5)], [`3 параметром можна передати асинхронний валідатор`]);
-    // this.formControl = new FormControl('John', [myValidator(3)]);
-    // this.formControl.valueChanges.subscribe(value => console.log(value));
-    // this.formControl.statusChanges.subscribe(status => {
-    //   console.log(this.formControl.errors);
-    //   console.log(status);
-    // });
-
-    // Для декількох форм
     this.formGroup = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      phoneNumber: new FormControl(''),
-      email:  new FormControl(''),
-      birthday:  new FormControl(''),
-      salary:  new FormControl(''),
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('[А-Яа-яЁё\a-zA-Z ]*')
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('[А-Яа-яЁё\a-zA-Z ]*')
+      ]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(13),
+        Validators.pattern(/^[+]*[0-9]{10,12}/)
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email
+      ]),
+      birthday: new FormControl('', [
+        Validators.required
+      ]),
+      salary: new FormControl('', [
+        Validators.required,
+        Validators.max(1000000),
+        Validators.min(0)
+      ]),
     });
-    this.formGroup.valueChanges.subscribe(value => console.log(value));
-
-    // FormArray дозволяє працювати із списками
-    // this.userListControl = new FormGroup({
-    //   users: new FormArray([
-    //     new FormControl('John', [myValidator(3)]),
-    //     new FormControl('Tom', [myValidator(3)]),
-    //     new FormControl('Brad', [myValidator(3)])
-    //   ])
-    // });
-    // this.userListControl.valueChanges.subscribe(value => console.log(value));
-    // this.userListControl.statusChanges.subscribe(status => {
-    //   console.log(status);
-    // });
-
-    // За допомогою FormBuilder можна простіше створити userListControl
-    // this.userListControl = this.formBuilder.group({
-    //   users: this.formBuilder.array([ ['John'], ['Tom'], ['Brad'] ])
-    // });
   }
-
-  // removeUserControl = index => {
-  //   (this.userListControl.controls.users as FormArray).removeAt(index);
-  // };
-  //
-  // addUserControl = () => {
-  //   (this.userListControl.controls.users as FormArray).push(new FormControl(''));
-  // };
+  get firstName() { return this.formGroup.get('firstName'); }
+  get lastName() { return this.formGroup.get('lastName'); }
+  get phoneNumber() { return this.formGroup.get('phoneNumber'); }
+  get email() { return this.formGroup.get('email'); }
+  get birthday() { return this.formGroup.get('birthday'); }
+  get salary() { return this.formGroup.get('salary'); }
 }
-
-// const myValidator = num => {
-//   return (formControl: FormControl) => {
-//     if (formControl.value.length < num) {
-//       return {myValidator: {message: 'Should be something'}};
-//     }
-//     return null;
-//   };
-// };
