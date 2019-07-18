@@ -1,5 +1,12 @@
+<div [hidden]="!showData" class="user-data">
+  <div>Hello {{firstName.value}} {{lastName.value}}!</div>
+  <div>Your phone number: {{phoneNumber.value}}</div>
+  <div>Your email: {{email.value}}</div>
+  <div>You have {{years}} years old</div>
+  <div>You earn {{salary.value}} KGS</div>
+</div>
 <div class="reactive-form">
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <div class="content" [formGroup]="formGroup">
       <label for="firstName">First Name:</label>
       <input
@@ -56,11 +63,10 @@
         type="date"
         formControlName="birthday"
         id="birthday"
-        [ng-min="18"]
       >
       <div *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">
         Поле 'Date of Birth' обов'язкове для заповнення.
-        Вкажіть дату народження
+        Вкажіть дату народження. 18+
       </div>
 
       <label required for="salary">Salary in KGS:</label>

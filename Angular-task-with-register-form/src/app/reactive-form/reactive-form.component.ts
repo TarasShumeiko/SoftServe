@@ -9,6 +9,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ReactiveFormComponent implements OnInit {
   formGroup: FormGroup;
 
+  showData = false;
+  years = null;
+
   ngOnInit() {
     this.formGroup = new FormGroup({
       firstName: new FormControl('', [
@@ -47,4 +50,19 @@ export class ReactiveFormComponent implements OnInit {
   get email() { return this.formGroup.get('email'); }
   get birthday() { return this.formGroup.get('birthday'); }
   get salary() { return this.formGroup.get('salary'); }
+
+  onSubmit() {
+    if (this.formGroup.valid) {
+      this.showData = true;
+      const date = this.birthday.value.split('-').join(', ');
+      const birth = new Date(date);
+      const birthSec = Date.parse(`${birth}`);
+      const today = new Date();
+      const todaySec = Date.parse(`${today}`);
+      const age = todaySec - birthSec;
+      this.years = Math.floor(age / 1000 / 60 / 60 / 24 / 365.25);
+    } else {
+      this.showData = false;
+    }
+  }
 }
